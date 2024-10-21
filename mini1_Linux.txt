@@ -1,0 +1,93 @@
+[yaw82@login0 ~]$ srun -A biosc1542_2024s -t 60 --mem=6G --pty bash
+srun: job 14613339 queued and waiting for resources
+srun: job 14613339 has been allocated resources
+[yaw82@smp-n58 ~]$ module load kallisto/0.46.1
+[yaw82@smp-n58 ~]$ kallisto index -i ~/hg38_refMrna_kallisto_index.idx /ix1/biosc1542_2024s/data/hg38_refMrna.fa
+
+[build] loading fasta file /ix1/biosc1542_2024s/data/hg38_refMrna.fa
+[build] k-mer length: 31
+[build] warning: clipped off poly-A tail (longer than 10)
+        from 11186 target sequences
+[build] warning: replaced 4 non-ACGUT characters in the input sequence
+        with pseudorandom nucleotides
+[build] counting k-mers ... done.
+[build] building target de Bruijn graph ...  done 
+[build] creating equivalence classes ...  done
+[build] target de Bruijn graph has 452202 contigs and contains 85060158 k-mers 
+
+[yaw82@smp-n58 ~]$ kallisto quant -i ~/hg38_refMrna_kallisto_index.idx -o uninfected_1_rf --single -l 200 -s 50 --rf-stranded /ix1/biosc1542_2024s/mp1/SRR11517725.fastq.gz
+
+[quant] fragment length distribution is truncated gaussian with mean = 200, sd = 50
+[index] k-mer length: 31
+[index] number of targets: 76,503
+[index] number of k-mers: 85,060,158
+[index] number of equivalence classes: 261,856
+[quant] running in single-end mode
+[quant] will process file 1: /ix1/biosc1542_2024s/mp1/SRR11517725.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 14,284,134 reads, 11,964,484 reads pseudoaligned
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,144 rounds
+
+[yaw82@smp-n58 ~]$ kallisto quant -i ~/hg38_refMrna_kallisto_index.idx -o uninfected_1_fr --single -l 200 -s 50 --fr-stranded /ix1/biosc1542_2024s/mp1/SRR11517725.fastq.gz
+
+[quant] fragment length distribution is truncated gaussian with mean = 200, sd = 50
+[index] k-mer length: 31
+[index] number of targets: 76,503
+[index] number of k-mers: 85,060,158
+[index] number of equivalence classes: 261,856
+[quant] running in single-end mode
+[quant] will process file 1: /ix1/biosc1542_2024s/mp1/SRR11517725.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 14,284,134 reads, 181,962 reads pseudoaligned
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,147 rounds
+
+[yaw82@smp-n58 ~]$ kallisto quant -i ~/hg38_refMrna_kallisto_index.idx -o uninfected_1 --single -l 200 -s 50 --rf-stranded /ix1/biosc1542_2024s/mp1/SRR11517725.fastq.gz
+
+[quant] fragment length distribution is truncated gaussian with mean = 200, sd = 50
+[index] k-mer length: 31
+[index] number of targets: 76,503
+[index] number of k-mers: 85,060,158
+[index] number of equivalence classes: 261,856
+[quant] running in single-end mode
+[quant] will process file 1: /ix1/biosc1542_2024s/mp1/SRR11517725.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 14,284,134 reads, 11,964,484 reads pseudoaligned
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,144 rounds
+
+[yaw82@smp-n58 ~]$ kallisto quant -i ~/hg38_refMrna_kallisto_index.idx -o uninfected_2 --single -l 200 -s 50 --rf-stranded /ix1/biosc1542_2024s/mp1/SRR11517729.fastq.gz
+
+[quant] fragment length distribution is truncated gaussian with mean = 200, sd = 50
+[index] k-mer length: 31
+[index] number of targets: 76,503
+[index] number of k-mers: 85,060,158
+[index] number of equivalence classes: 261,856
+[quant] running in single-end mode
+[quant] will process file 1: /ix1/biosc1542_2024s/mp1/SRR11517729.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 10,074,698 reads, 5,070,550 reads pseudoaligned
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,180 rounds
+
+[yaw82@smp-n58 ~]$ kallisto quant -i ~/hg38_refMrna_kallisto_index.idx -o infected --single -l 200 -s 50 --rf-stranded /ix1/biosc1542_2024s/mp1/SRR11517733.fastq.gz /ix1/biosc1542_2024s/mp1/SRR11517734.fastq.gz /ix1/biosc1542_2024s/mp1/SRR11517735.fastq.gz /ix1/biosc1542_2024s/mp1/SRR11517736.fastq.gz /ix1/biosc1542_2024s/mp1/SRR11517737.fastq.gz /ix1/biosc1542_2024s/mp1/SRR11517738.fastq.gz /ix1/biosc1542_2024s/mp1/SRR11517739.fastq.gz /ix1/biosc1542_2024s/mp1/SRR11517740.fastq.gz
+
+[quant] fragment length distribution is truncated gaussian with mean = 200, sd = 50
+[index] k-mer length: 31
+[index] number of targets: 76,503
+[index] number of k-mers: 85,060,158
+[index] number of equivalence classes: 261,856
+[quant] running in single-end mode
+[quant] will process file 1: /ix1/biosc1542_2024s/mp1/SRR11517733.fastq.gz
+[quant] will process file 2: /ix1/biosc1542_2024s/mp1/SRR11517734.fastq.gz
+[quant] will process file 3: /ix1/biosc1542_2024s/mp1/SRR11517735.fastq.gz
+[quant] will process file 4: /ix1/biosc1542_2024s/mp1/SRR11517736.fastq.gz
+[quant] will process file 5: /ix1/biosc1542_2024s/mp1/SRR11517737.fastq.gz
+[quant] will process file 6: /ix1/biosc1542_2024s/mp1/SRR11517738.fastq.gz
+[quant] will process file 7: /ix1/biosc1542_2024s/mp1/SRR11517739.fastq.gz
+[quant] will process file 8: /ix1/biosc1542_2024s/mp1/SRR11517740.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 20,075,695 reads, 1,738,890 reads pseudoaligned
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,063 rounds

@@ -1,0 +1,13 @@
+{
+	"n_targets": 76503,
+	"n_bootstraps": 0,
+	"n_processed": 10074698,
+	"n_pseudoaligned": 5070550,
+	"n_unique": 1938870,
+	"p_pseudoaligned": 50.3,
+	"p_unique": 19.2,
+	"kallisto_version": "0.46.1",
+	"index_version": 10,
+	"start_time": "Mon Mar 18 17:16:58 2024",
+	"call": "kallisto quant -i /ihome/biosc1542_2024s/yaw82/hg38_refMrna_kallisto_index.idx -o uninfected_2 --single -l 200 -s 50 --rf-stranded /ix1/biosc1542_2024s/mp1/SRR11517729.fastq.gz"
+}
